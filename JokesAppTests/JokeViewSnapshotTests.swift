@@ -1,4 +1,6 @@
+@testable import JokesApp
 import SnapshotTesting
+import SwiftUI
 import XCTest
 
 final class JokeViewSnapshotTests: XCTestCase {
@@ -10,7 +12,7 @@ final class JokeViewSnapshotTests: XCTestCase {
     )
     let sut = JokeView(joke: joke)
     let controller = UIHostingController(rootView: sut)
-    assertSnapshot(of: controller, as: .image(on: .iPhone13Pro))
+    assertSnapshot(of: controller, as: .image(on: .iPhone13Pro), record: true)
   }
 
 }
