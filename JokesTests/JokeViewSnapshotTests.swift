@@ -7,7 +7,10 @@ final class JokeViewSnapshotTests: XCTestCase {
 
   func test_JokeView_DisplaysJoke() {
     let controller = UIHostingController(rootView: JokeViewPreviewProvider.jokeView)
-    assertSnapshot(of: controller, as: .image(on: .iPhone13Pro), record: true)
+    assertSnapshot(
+      of: controller,
+      as: .image(drawHierarchyInKeyWindow: true, size: ViewImageConfig.iPhone13Pro.size)
+    )
   }
 
 }

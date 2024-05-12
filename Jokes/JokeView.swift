@@ -13,7 +13,29 @@ struct JokeView: View {
   }
 
   var body: some View {
-    Text("Hello world")
+    VStack {
+      Image("header")
+
+      VStack(alignment: .center) {
+        Text(joke.setup)
+        Text("⤵️")
+        Text(joke.punchline)
+      }.multilineTextAlignment(.center)
+      .frame(height: 180)
+      .padding(.horizontal, 64)
+      .padding(.top, 16)
+
+      Button(action: { print("Button tapped") }) {
+        Text("Tell me another!")
+          .tint(.black)
+          .padding(.vertical, 10)
+      }.frame(maxWidth: .infinity)
+        .background(Color("ButtonBackground"))
+        .clipShape(Capsule())
+        .overlay(Capsule().stroke(style: StrokeStyle(lineWidth: 3)))
+        .padding(.horizontal, 32)
+        .padding(.top, 16)
+    }
   }
 }
 
