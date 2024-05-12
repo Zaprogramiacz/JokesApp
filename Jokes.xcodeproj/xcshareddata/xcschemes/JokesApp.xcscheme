@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "474584692BEAD41400991690"
-               BuildableName = "JokesApp.app"
-               BlueprintName = "JokesApp"
-               ReferencedContainer = "container:JokesApp.xcodeproj">
+               BuildableName = "Jokes.app"
+               BlueprintName = "Jokes"
+               ReferencedContainer = "container:Jokes.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,9 +35,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4745847E2BEAD73200991690"
-               BuildableName = "JokesAppTests.xctest"
-               BlueprintName = "JokesAppTests"
-               ReferencedContainer = "container:JokesApp.xcodeproj">
+               BuildableName = "JokesTests.xctest"
+               BlueprintName = "JokesTests"
+               ReferencedContainer = "container:Jokes.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "474584692BEAD41400991690"
-            BuildableName = "JokesApp.app"
-            BlueprintName = "JokesApp"
-            ReferencedContainer = "container:JokesApp.xcodeproj">
+            BuildableName = "Jokes.app"
+            BlueprintName = "Jokes"
+            ReferencedContainer = "container:Jokes.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -74,9 +74,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "474584692BEAD41400991690"
-            BuildableName = "JokesApp.app"
-            BlueprintName = "JokesApp"
-            ReferencedContainer = "container:JokesApp.xcodeproj">
+            BuildableName = "Jokes.app"
+            BlueprintName = "Jokes"
+            ReferencedContainer = "container:Jokes.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

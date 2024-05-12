@@ -1,4 +1,4 @@
-@testable import JokesApp
+@testable import Jokes
 import SnapshotTesting
 import SwiftUI
 import XCTest

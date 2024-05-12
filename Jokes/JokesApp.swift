@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct JokesAppApp: App {
+struct JokesApp: App {
   var body: some Scene {
     WindowGroup {
       
