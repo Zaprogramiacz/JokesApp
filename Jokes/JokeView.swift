@@ -1,15 +1,20 @@
 import SwiftUI
 
+enum JokeState {
+  case loading
+  case loaded(joke: Joke)
+}
+
 struct Joke {
   let setup: String
   let punchline: String
 }
 
 struct JokeView: View {
-  let joke: Joke
+  let state: JokeState
 
-  init(joke: Joke) {
-    self.joke = joke
+  init(state: JokeState) {
+    self.state = state
   }
 
   var body: some View {
@@ -17,9 +22,14 @@ struct JokeView: View {
       Image("header")
 
       VStack(alignment: .center) {
-        Text(joke.setup)
-        Text("⤵️")
-        Text(joke.punchline)
+        switch state {
+        case .loading:
+          Text("Making up a joke 🤭")
+        case .loaded(let joke):
+          Text(joke.setup)
+          Text("⤵️")
+          Text(joke.punchline)
+        }
       }.multilineTextAlignment(.center)
       .frame(height: 180)
       .padding(.horizontal, 64)
@@ -44,12 +54,16 @@ enum JokeViewPreviewProvider: PreviewProvider {
   // MARK: - PreviewProvider
 
   static var previews: some View {
-    jokeView
+    Group {
+      jokeView
+      loadingView
+    }
   }
 
   // MARK: - Views
 
-  static let jokeView = JokeView(joke: joke)
+  static let jokeView = JokeView(state: .loaded(joke: joke))
+  static let loadingView = JokeView(state: .loading)
 
   // MARK: - Models
 
