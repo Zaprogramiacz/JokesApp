@@ -21,4 +21,12 @@ final class JokeViewSnapshotTests: XCTestCase {
     )
   }
 
+  func test_JokeView_LoadingJokeFailure() {
+    let controller = UIHostingController(rootView: JokeViewPreviewProvider.jokeLoadingFailure)
+    assertSnapshot(
+      of: controller,
+      as: .image(drawHierarchyInKeyWindow: true, size: ViewImageConfig.iPhone13Pro.size)
+    )
+  }
+
 }

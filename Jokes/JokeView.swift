@@ -3,6 +3,7 @@ import SwiftUI
 enum JokeState {
   case loading
   case loaded(joke: Joke)
+  case failure
 }
 
 struct Joke {
@@ -29,6 +30,8 @@ struct JokeView: View {
           Text(joke.setup)
           Text("⤵️")
           Text(joke.punchline)
+        case .failure:
+          Text("I couldn't come up with a good joke. Can I get another try? 🤔")
         }
       }.multilineTextAlignment(.center)
       .frame(height: 180)
@@ -49,27 +52,14 @@ struct JokeView: View {
   }
 }
 
-enum JokeViewPreviewProvider: PreviewProvider {
+#Preview {
+  JokeViewPreviewProvider.jokeView
+}
 
-  // MARK: - PreviewProvider
+#Preview {
+  JokeViewPreviewProvider.loadingView
+}
 
-  static var previews: some View {
-    Group {
-      jokeView
-      loadingView
-    }
-  }
-
-  // MARK: - Views
-
-  static let jokeView = JokeView(state: .loaded(joke: joke))
-  static let loadingView = JokeView(state: .loading)
-
-  // MARK: - Models
-
-  static let joke = Joke(
-    setup: "The punchline often arrives before the set-up.",
-    punchline: "Do you know the problem with UDP jokes?"
-  )
-
+#Preview {
+  JokeViewPreviewProvider.jokeLoadingFailure
 }
