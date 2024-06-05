@@ -1,3 +1,7 @@
+//
+//  Created by Maciej Gomółka
+//
+
 @testable import Jokes
 import SnapshotTesting
 import SwiftUI

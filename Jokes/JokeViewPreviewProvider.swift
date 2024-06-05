@@ -1,3 +1,7 @@
+//
+//  Created by Maciej Gomółka
+//
+
 enum JokeViewPreviewProvider {
 
   // MARK: - Views

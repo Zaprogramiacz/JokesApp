@@ -1,3 +1,7 @@
+//
+//  Created by Maciej Gomółka
+//
+
 import SwiftUI
 
 enum JokeState {
