@@ -16,10 +16,12 @@ struct Joke {
 }
 
 struct JokeView: View {
-  let state: JokeState
+  @State var state: JokeState
+  private let buttonAction: () -> Void
 
-  init(state: JokeState) {
+  init(state: JokeState, buttonAction: @escaping () -> Void) {
     self.state = state
+    self.buttonAction = buttonAction
   }
 
   var body: some View {
@@ -42,7 +44,7 @@ struct JokeView: View {
       .padding(.horizontal, 64)
       .padding(.top, 16)
 
-      Button(action: { print("Button tapped") }) {
+      Button(action: buttonAction) {
         Text("Tell me another!")
           .tint(.black)
           .padding(.vertical, 10)

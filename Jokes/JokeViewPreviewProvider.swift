@@ -6,9 +6,9 @@ enum JokeViewPreviewProvider {
 
   // MARK: - Views
 
-  static let jokeView = JokeView(state: .loaded(joke: joke))
-  static let loadingView = JokeView(state: .loading)
-  static let jokeLoadingFailure = JokeView(state: .failure)
+  static let jokeView = JokeView(state: .loaded(joke: joke)) {}
+  static let loadingView = JokeView(state: .loading) {}
+  static let jokeLoadingFailure = JokeView(state: .failure) {}
 
   // MARK: - Models
 
