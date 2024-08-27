@@ -17,9 +17,14 @@ struct Joke {
 
 struct JokeView: View {
   @State var state: JokeState
+  private let requestExecutor: (URLRequest, (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse)
 
-  init(state: JokeState) {
+  init(
+    state: JokeState,
+    requestExecutor: @escaping (URLRequest, (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse) = URLSession.shared.data
+  ) {
     self.state = state
+    self.requestExecutor = requestExecutor
   }
 
   var body: some View {
@@ -42,7 +47,7 @@ struct JokeView: View {
       .padding(.horizontal, 64)
       .padding(.top, 16)
 
-      Button(action: { print("Button tapped") }) {
+      Button(action: { fetchNewJoke() }) {
         Text("Tell me another!")
           .tint(.black)
           .padding(.vertical, 10)
@@ -52,6 +57,14 @@ struct JokeView: View {
         .overlay(Capsule().stroke(style: StrokeStyle(lineWidth: 3)))
         .padding(.horizontal, 32)
         .padding(.top, 16)
+    }
+  }
+
+  func fetchNewJoke() {
+    let url = URL(string: "https://official-joke-api.appspot.com/random_joke").unsafelyUnwrapped
+    let request = URLRequest(url: url)
+    Task {
+      try! await requestExecutor(request, nil)
     }
   }
 
