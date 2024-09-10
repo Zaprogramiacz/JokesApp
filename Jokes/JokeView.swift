@@ -15,16 +15,25 @@ struct Joke {
   let punchline: String
 }
 
+protocol URLSessionProtocol {
+  func data(
+    for request: URLRequest,
+    delegate: (any URLSessionTaskDelegate)?
+  ) async throws -> (Data, URLResponse)
+}
+
+extension URLSession: URLSessionProtocol {}
+
 struct JokeView: View {
   @State var state: JokeState
-  private let requestExecutor: (URLRequest, (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse)
+  private let urlSession: URLSessionProtocol
 
   init(
     state: JokeState,
-    requestExecutor: @escaping (URLRequest, (any URLSessionTaskDelegate)?) async throws -> (Data, URLResponse) = URLSession.shared.data
+    urlSession: URLSessionProtocol = URLSession.shared
   ) {
     self.state = state
-    self.requestExecutor = requestExecutor
+    self.urlSession = urlSession
   }
 
   var body: some View {
@@ -64,7 +73,7 @@ struct JokeView: View {
     let url = URL(string: "https://official-joke-api.appspot.com/random_joke").unsafelyUnwrapped
     let request = URLRequest(url: url)
     Task {
-      try! await requestExecutor(request, nil)
+      try! await urlSession.data(for: request, delegate: nil)
     }
   }
 
