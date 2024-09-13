@@ -1,5 +1,5 @@
 //
-//  Created by Maciej Gomółka on 22.07.2024.
+//  Created by Maciej Gomółka.
 //
 
 @testable import Jokes

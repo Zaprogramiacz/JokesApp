@@ -1,28 +1,8 @@
 //
-//  Created by Maciej Gomółka
+//  Created by Maciej Gomółka.
 //
 
 import SwiftUI
-
-enum JokeState {
-  case loading
-  case loaded(joke: Joke)
-  case failure
-}
-
-struct Joke {
-  let setup: String
-  let punchline: String
-}
-
-protocol URLSessionProtocol {
-  func data(
-    for request: URLRequest,
-    delegate: (any URLSessionTaskDelegate)?
-  ) async throws -> (Data, URLResponse)
-}
-
-extension URLSession: URLSessionProtocol {}
 
 struct JokeView: View {
   @State var state: JokeState

@@ -1,5 +1,5 @@
 //
-//  Created by Maciej Gomółka
+//  Created by Maciej Gomółka.
 //
 
 enum JokeViewPreviewProvider {
