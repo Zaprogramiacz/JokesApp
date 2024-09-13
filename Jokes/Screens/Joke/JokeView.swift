@@ -1,25 +1,19 @@
 //
-//  Created by Maciej Gomółka
+//  Created by Maciej Gomółka.
 //
 
 import SwiftUI
 
-enum JokeState {
-  case loading
-  case loaded(joke: Joke)
-  case failure
-}
-
-struct Joke {
-  let setup: String
-  let punchline: String
-}
-
 struct JokeView: View {
-  let state: JokeState
+  @State var state: JokeState
+  private let urlSession: URLSessionProtocol
 
-  init(state: JokeState) {
+  init(
+    state: JokeState,
+    urlSession: URLSessionProtocol = URLSession.shared
+  ) {
     self.state = state
+    self.urlSession = urlSession
   }
 
   var body: some View {
@@ -42,7 +36,7 @@ struct JokeView: View {
       .padding(.horizontal, 64)
       .padding(.top, 16)
 
-      Button(action: { print("Button tapped") }) {
+      Button(action: { fetchNewJoke() }) {
         Text("Tell me another!")
           .tint(.black)
           .padding(.vertical, 10)
@@ -54,6 +48,15 @@ struct JokeView: View {
         .padding(.top, 16)
     }
   }
+
+  func fetchNewJoke() {
+    let url = URL(string: "https://official-joke-api.appspot.com/random_joke").unsafelyUnwrapped
+    let request = URLRequest(url: url)
+    Task {
+      try! await urlSession.data(for: request, delegate: nil)
+    }
+  }
+
 }
 
 #Preview {
